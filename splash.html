@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Movimiento Training</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease-in-out 3s forwards;
+        }
+        .loader {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .loader img {
+        width: 170px;
+        z-index: 2;
+        filter: drop-shadow(0 0 10px #ff0000);
+        animation: glow 2s ease-in-out infinite;
+        margin-left: 10px;
+    }
+    .pulse-spinner {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 8px solid #ff0000;
+        border-radius: 50%;
+        animation: pulse-spin 2s linear infinite;
+        box-shadow: 0 0 20px #ff0000;
+        z-index: 1;
+    }
+    .barra-gym {
+        width: 200px;
+        height: 20px;
+        background: #222;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 2px solid #f7f3f3;
+    }
+    .peso {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #f7f3f3, #f7f3f3);
+        animation: cargar-peso 3s ease-in-out infinite;
+    }
+    @keyframes pulse-spin {
+        0% { transform: rotate(0deg) scale(1); opacity: 1; }
+        50% { transform: rotate(180deg) scale(1.1); opacity: 0.7; }
+        100% { transform: rotate(360deg) scale(1); opacity: 1; }
+    }
+    @keyframes glow {
+        0%, 100% { filter: drop-shadow(0 0 10px #f7f3f3); }
+        50% { filter: drop-shadow(0 0 20px #f7f3f3); }
+    }
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+        @keyframes cargar-peso {
+            0% { width: 0%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
+        }
+    </style>
+</head>
+<body>
+    <div id="splash">
+        <div class="loader">
+            <img src="img/logo-movimiento.png" alt="Logo Movimiento Training">
+            <div class="pulse-spinner"></div>
+        </div>
+        <div class="barra-gym">
+            <div class="peso"></div>
+        </div>
+    </div>
+    <script>
+        sessionStorage.setItem('splashMostrado', 'true');
+        setTimeout(() => {
+            window.location.replace('index.html');
+        }, 4000);
+    </script>
+</body>
+</html>

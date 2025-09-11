@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Movimiento Training</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: url('img/fondo-gimnasio2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  padding: 2rem;
+}
+
+    h1 {
+      text-align: center;
+      color: #e53935;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: auto;
+      gap: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #e53935;
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #d32f2f;
+    }
+
+    .whatsapp {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .whatsapp a {
+      background-color: #25d366;
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .whatsapp a:hover {
+      background-color: #1da851;
+    }
+    p {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+  </style>
+</head>
+<div style="text-align: center; margin-bottom: 2rem;">
+  <img src="img/logo-movimiento.png" alt="Logo Movimiento Training" style="width: 160px;">
+</div>
+
+<body>
+  <h1 style="text-align: center; color: #e53935; margin-bottom: 1rem;">Contacto</h1>
+  <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);">
+    <p>
+  Contactanos para conocer más sobre nuestros programas.<br><br>
+  Sumate a nuestra comunidad y entrená con nosotros.
+</p>
+
+
+  <form action="https://formsubmit.co/movimientofitnesscenter@gmail.com" method="POST">
+  <input type="text" name="nombre" placeholder="Tu nombre" required />
+  <input type="email" name="email" placeholder="Tu correo" required />
+  <textarea name="mensaje" placeholder="Tu mensaje" rows="5" required></textarea>
+
+  <!-- Personalización del envío -->
+  <input type="hidden" name="_next" value="https://movimientotraining.online/gracias.html">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="Nuevo mensaje desde la página de contacto">
+  <input type="hidden" name="_template" value="table">
+
+  <button type="submit">Enviar mensaje</button>
+</form>
+
+
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <p>O escribinos por WhatsApp:</p>
+    <a href="https://wa.me/549XXXXXXXXXX?text=Hola!%20Quiero%20entrenar%20con%20Movimiento" target="_blank"
+       style="background-color: #25d366; color: white; padding: 0.7rem 1.4rem; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block;">
+      💬 Enviar mensaje
+    </a>
+  </div>
+
+  <!-- Logo personal abajo -->
+  <div style="text-align: center; margin-top: 3rem;">
+    <img src="img/logo-jlm-ihp.png" alt="Logo José Luis Mancilla IHP" style="width: 140px; opacity: 0.9;">
+    <p style="color: white; font-size: 0.9rem; margin-top: 0.5rem;">José Luis Mancilla — Personal Trainer | IHP Certified</p>
+  </div>
+</body>
+</html>

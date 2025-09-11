@@ -1,0 +1,52 @@
+{
+  "id": "movimiento-training-app",
+  "name": "Movimiento Training",
+  "short_name": "Movimiento",
+  "description": "Entrenamiento personalizado online con seguimiento y planes semanales",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#e53935",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "lang": "es-ES",
+  "icons": [
+    {
+      "src": "/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Rutina diaria",
+      "url": "/",
+      "icons": [{ 
+        "src": "/img/icon-192.png", 
+        "sizes": "192x192",
+        "type": "image/png"
+      }]
+    }
+  ],
+  "categories": ["fitness", "health", "lifestyle"]
+}

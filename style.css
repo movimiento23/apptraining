@@ -1,0 +1,200 @@
+/* ======= CONFIGURACIÓN GENERAL ======= */
+body {
+  margin: 0;
+  background-color: #111;
+  color: #eee;
+  font-family: 'Montserrat', sans-serif;
+  padding: 1rem;
+  font-size: 13px;
+}
+
+/* ======= BLOQUES DE EJERCICIO ======= */
+.ejercicio {
+  margin-bottom: 1rem;
+}
+
+.logo {
+  max-width: 120px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+  filter: drop-shadow(0 0 6px #000);
+}
+
+/* ======= ESTADO DE DÍAS ======= */
+.dia {
+  display: none;
+  margin-top: 1rem;
+}
+.dia.activo {
+  display: block;
+}
+.selector-dias button.activo {
+  background-color: #b71c1c;
+}
+
+/* ======= BOTONERA DE DÍAS ======= */
+.selector-dias {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+  gap: 0.5rem;
+}
+
+.selector-dias button {
+  flex: 1 1 calc(16.6% - 0.5rem);
+  background-color: #222;
+  color: #ddd;
+  border: 1px solid #333;
+  padding: 0.8rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.selector-dias button:hover {
+  background-color: #333;
+  transform: scale(1.03);
+}
+
+.selector-dias button.activo {
+  background-color: #e53935;
+  color: #fff;
+  border-color: #b71c1c;
+}
+
+/* ======= TÍTULOS ======= */
+h1 {
+  font-size: 1.6rem;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ======= TABLA DE SERIES Y INTERACTIVAS ======= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  table-layout: fixed;
+  margin-top: 0.5rem;
+}
+
+th, td {
+  border: 1px solid #444;
+  padding: 0.25rem;
+  text-align: center;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #e0e0e0;
+}
+
+/* ======= TABLA RUTINA ======= */
+.tabla-rutina th {
+  background-color: #292929;
+  font-size: 0.85rem;
+  padding: 0.6rem 0.4rem;
+}
+
+.tabla-rutina td {
+  font-size: 0.82rem;
+  padding: 0.5rem 0.4rem;
+}
+
+/* ======= PANEL DESPLEGABLE ======= */
+.panel {
+  display: none;
+  background-color: #1a1a1a;
+  padding: 1rem;
+  border: 1px solid #333;
+  margin-top: -1px;
+}
+
+.panel-interactivo {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scaleY(0.95); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+/* ======= INPUTS & TEXTAREAS ======= */
+input[type="number"],
+textarea {
+  border-radius: 4px;
+  border: 1px solid #444;
+  background-color: #191919;
+  color: #eee;
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  box-sizing: border-box;
+}
+
+input[type="number"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #e53935;
+  box-shadow: 0 0 0 1px #e53935;
+}
+
+/* ======= GIF DEL EJERCICIO ======= */
+.gif-ejercicio {
+  width: 100%;
+  max-width: 260px;
+  display: block;
+  margin: 0 auto 0.8rem;
+  border-radius: 8px;
+}
+
+/* ======= BOTONES Y MENSAJES ======= */
+.btn-guardar-ejercicio {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.btn-guardar-ejercicio:hover {
+  background-color: #b71c1c;
+}
+
+.mensaje-ejercicio {
+  margin-top: 0.6rem;
+  color: #4caf50;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.4s;
+  font-size: 0.95rem;
+}
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #eee;
+  background: url('./img/fondo-gimnasio2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-color: #111;
+  padding: 1rem;
+  font-size: 13px;
+}
+.logo {
+  display: block;
+  margin: 0 auto 1rem;
+  max-width: 160px;
+  height: auto;
+  filter: drop-shadow(0 0 8px #000);
+}

@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Index - Jose - Mes 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: url('../../img/fondo-gimnasio2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .contenedor {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 { color: #e53935; margin-bottom: 1rem; }
+    .semanas {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .semana-bloque {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .semana-bloque button {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      border-radius: 30px;
+      border: 2px solid #e53935;
+      background-color: #fff;
+      color: #e53935;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s;
+      text-align: center;
+    }
+
+    .semana-bloque button:hover {
+      transform: scale(1.05);
+    }
+
+    .fueguito {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.6rem;
+  display: none; /* ← AGREGAR ESTA LÍNEA */
+}
+
+.fueguito-activo {
+  display: inline; /* ← AGREGAR ESTA LÍNEA */
+  animation: parpadeo 1s infinite;
+}
+
+    @keyframes parpadeo {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.2); }
+    }
+      
+    .grupo-dias {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .btn-dia {
+      flex: 1 1 45%;
+      max-width: 48%;
+      padding: 0.6rem 1rem;
+      background: #e53935;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .btn-dia:hover {
+      transform: scale(1.05);
+    }
+    @media (max-width: 600px) {
+      .btn-dia {
+        flex: 1 1 calc(50% - 1rem);
+      }
+    }
+    .frase-semanal {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #f5f5f5;
+      text-align: center;
+      margin-top: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      animation: fadeInUp 1s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }    
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <img src="../../img/logo-movimiento.png" alt="Logo Movimiento Training" style="width: 120px; margin-bottom: 1rem;" />
+    <h1>¡Hola, Jose! – Mes 1</h1>
+    <p>Elegí la semana de entrenamiento que querés visualizar:</p>
+
+    
+                <div class="semanas">
+                  <div class="semana-bloque">
+                    <button onclick="mostrarDias(1)">Semana 1</button>
+                    <span id="fueguito-semana-1" class="fueguito">🔥</span>
+                  </div>
+                  <div class="semana-bloque">
+                    <button onclick="mostrarDias(2)">Semana 2</button>
+                    <span id="fueguito-semana-2" class="fueguito">🔥</span>
+                  </div>
+                  <div class="semana-bloque">
+                    <button onclick="mostrarDias(3)">Semana 3</button>
+                    <span id="fueguito-semana-3" class="fueguito">🔥</span>
+                  </div>
+                  <div class="semana-bloque">
+                    <button onclick="mostrarDias(4)">Semana 4</button>
+                    <span id="fueguito-semana-4" class="fueguito">🔥</span>
+                  </div>
+                </div>
+
+                <div id="dias-1" class="dias-semana" style="display: none; margin-top: 1rem;">
+                    <h2>Días – Semana 1</h2>
+                    <div class="grupo-dias">
+                        <button class="btn-dia" onclick="abrirDia('semana-1-mes1-lunes.html')">Lunes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-1-mes1-martes.html')">Martes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-1-mes1-miercoles.html')">Miércoles</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-1-mes1-jueves.html')">Jueves</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-1-mes1-viernes.html')">Viernes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-1-mes1-sabado.html')">Sábado</button>
+                    </div>
+                </div>
+
+                <div id="dias-2" class="dias-semana" style="display: none; margin-top: 1rem;">
+                    <h2>Días – Semana 2</h2>
+                    <div class="grupo-dias">
+                        <button class="btn-dia" onclick="abrirDia('semana-2-mes1-lunes.html')">Lunes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-2-mes1-martes.html')">Martes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-2-mes1-miercoles.html')">Miércoles</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-2-mes1-jueves.html')">Jueves</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-2-mes1-viernes.html')">Viernes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-2-mes1-sabado.html')">Sábado</button>
+                    </div>
+                </div>
+
+                <div id="dias-3" class="dias-semana" style="display: none; margin-top: 1rem;">
+                    <h2>Días – Semana 3</h2>
+                    <div class="grupo-dias">
+                        <button class="btn-dia" onclick="abrirDia('semana-3-mes1-lunes.html')">Lunes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-3-mes1-martes.html')">Martes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-3-mes1-miercoles.html')">Miércoles</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-3-mes1-jueves.html')">Jueves</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-3-mes1-viernes.html')">Viernes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-3-mes1-sabado.html')">Sábado</button>
+                    </div>
+                </div>
+
+                <div id="dias-4" class="dias-semana" style="display: none; margin-top: 1rem;">
+                    <h2>Días – Semana 4</h2>
+                    <div class="grupo-dias">
+                        <button class="btn-dia" onclick="abrirDia('semana-4-mes1-lunes.html')">Lunes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-4-mes1-martes.html')">Martes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-4-mes1-miercoles.html')">Miércoles</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-4-mes1-jueves.html')">Jueves</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-4-mes1-viernes.html')">Viernes</button>
+                        <button class="btn-dia" onclick="abrirDia('semana-4-mes1-sabado.html')">Sábado</button>
+                    </div>
+                </div>
+                
+    <p class="frase-semanal"></p>
+
+  </div>
+
+  <script>
+    function mostrarDias(n) {
+      const todos = document.querySelectorAll('.dias-semana');
+      const activo = document.getElementById('dias-' + n);
+
+      todos.forEach(div => {
+        if (div !== activo) {
+          div.style.display = 'none';
+        }
+      });
+
+      const isVisible = getComputedStyle(activo).display === 'block';
+      activo.style.display = isVisible ? 'none' : 'block';
+    }
+    
+    function abrirDia(ruta) {
+      fetch(ruta, { method: 'HEAD' })
+        .then(res => {
+          if (res.ok) {
+            window.location.href = ruta + '?v=' + Date.now();
+          } else {
+            irAProximamente();
+          }
+        })
+        .catch(() => {
+          irAProximamente();
+        });
+    }
+
+    function irAProximamente() {
+      const parts = window.location.pathname.split('/');
+      const idx = parts.indexOf('clientes');
+      const base = parts.slice(0, idx + 1).join('/');
+      const proxPath = base + '/proximamente.html';
+      window.location.href = proxPath;
+    }
+
+    // Cargar frases semanales
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("../../../frases/frases.json")
+        .then(response => response.json())
+        .then(data => {
+          const frases = data.frases;
+          const hoy = new Date();
+          const semanaActual = Math.ceil(hoy.getDate() / 7);
+          const frase = frases[(semanaActual - 1) % frases.length];
+
+          const contenedor = document.querySelector(".frase-semanal");
+          if (contenedor) contenedor.textContent = frase;
+        })
+        .catch(error => {
+          console.error("Error al cargar las frases:", error);
+        });
+    });
+
+    // REEMPLAZAR TODO EL SCRIPT AL FINAL DEL BODY CON ESTO:
+
+// Variables globales establecidas desde el template
+window.mesActualNumero = 1;
+window.mesSiguienteNumero = 2;
+
+// SISTEMA DE FUEGUITOS MOTIVACIONALES - SOLO SEMANAS
+function verificarFueguitos() {
+  console.log('🔍 Iniciando verificación de fueguitos para semanas...');
+  console.log('📊 Mes actual:', window.mesActualNumero, '| Mes siguiente:', window.mesSiguienteNumero);
+  
+  const configuracion = [
+    { semana: 1, archivo: "semana-2-mes" + window.mesActualNumero + "-lunes.html" },
+    { semana: 2, archivo: "semana-3-mes" + window.mesActualNumero + "-lunes.html" },
+    { semana: 3, archivo: "semana-4-mes" + window.mesActualNumero + "-lunes.html" },
+    { semana: 4, 
+  archivo: "../mes" + window.mesSiguienteNumero 
+         + "/semana-1-mes" + window.mesSiguienteNumero + "-lunes.html" 
+}
+  ];
+
+  async function archivoExiste(url) {
+    try {
+      const response = await fetch(url, { method: 'HEAD', cache: 'no-cache' });
+      return response.ok;
+    } catch (error) {
+      try {
+        const controller = new AbortController();
+        setTimeout(() => controller.abort(), 1500);
+        const response = await fetch(url, {
+          method: 'GET',
+          cache: 'no-cache',
+          signal: controller.signal
+        });
+        return response.ok;
+      } catch (error2) {
+        return false;
+      }
+    }
+  }
+
+  function activarFueguito(numeroSemana) {
+    const elemento = document.getElementById('fueguito-semana-' + numeroSemana);
+    if (elemento) {
+      elemento.classList.add('fueguito-activo');
+      elemento.style.display = 'inline';
+      console.log('🔥 Fueguito activado para semana ' + numeroSemana);
+      return true;
+    }
+    console.warn('⚠️ No se encontró elemento fueguito-semana-' + numeroSemana);
+    return false;
+  }
+
+  configuracion.forEach(async (config) => {
+    try {
+      console.log('⏳ Verificando semana ' + config.semana + ': ' + config.archivo);
+      const existe = await archivoExiste(config.archivo);
+      
+      if (existe) {
+        activarFueguito(config.semana);
+        console.log('✅ Archivo encontrado: ' + config.archivo);
+      } else {
+        console.log('❌ Archivo no encontrado: ' + config.archivo);
+      }
+    } catch (error) {
+      console.error('💥 Error verificando ' + config.archivo + ':', error);
+    }
+  });
+  
+  console.log('🔥 Verificación de fueguitos completada');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('📄 Página cargada - iniciando sistema de fueguitos...');
+  setTimeout(verificarFueguitos, 500);
+});
+  </script>
+  
+</body>
+</html>

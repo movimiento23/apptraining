@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Viernes – Jacky</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #000;
+      background-image: url("../../img/fondo-gimnasio2.jpg");
+      background-size: cover;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      padding: 2rem;
+      margin: 0;
+      text-shadow: 1px 1px 2px #000;
+    }
+    header { text-align: center; margin-bottom: 1rem }
+    header img { max-width: 140px; display: block; margin: 0 auto }
+    h1 { color: #e53935; font-size: 1.6rem; margin: 0.5rem 0 }
+    h2 { font-size: 1.1rem; text-align: center; margin-bottom: 2rem }
+    .bloque-ejercicio {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid #e53935;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1.5rem 0;
+    }
+    .bloque-ejercicio h3 {
+      margin: 0;
+      color: #e53935;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+    }
+    .tabla-ejercicio {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+    }
+    .tabla-ejercicio th {
+      background: #e53935;
+      color: #fff;
+      padding: 0.5rem;
+      border: 1px solid #333;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+    .tabla-ejercicio td {
+      padding: 0.5rem;
+      border: 1px solid #333;
+      text-align: center;
+      background: rgba(255,255,255,0.05);
+    }
+    .input-cliente {
+      background: #fff;
+      color: #000;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 0.4rem;
+      width: 90%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .btn-guardar-ejercicio {
+      margin-top: 0.5rem;
+      background: #2e7d32;
+      color: #fff;
+      border: none;
+      padding: 0.4rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .mensaje-ejercicio {
+      color: #81c784;
+      margin-top: 0.3rem;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  
+    .hiit-cardio-seccion {
+        margin-top: 3rem; /* Espacio superior para separarlo de la rutina principal */
+        padding: 1.5rem;
+        background-color: rgba(25, 25, 25, 0.9); /* Fondo oscuro con transparencia */
+        border-radius: 12px;
+        border: 2px solid #6200ea; /* Borde del color principal de HIIT */
+        box-shadow: 0 0 15px rgba(98, 0, 234, 0.4); /* Sombra para resaltar */
+    }
+    .hiit-cardio-seccion h2 {
+        font-size: 1.8rem;
+        color: #6200ea;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 2px solid #6200ea;
+        padding-bottom: 0.8rem;
+        margin-bottom: 1.5rem;
+    }
+    .hiit-cardio-seccion .hiit-info p {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: #f2f2f2;
+    }
+    .hiit-cardio-seccion .hiit-info p strong {
+        color: #7e57c2;
+    }
+    .hiit-cardio-seccion h3 {
+        font-size: 1.4rem;
+        color: #e53935;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    .tabla-ejercicios-hiit {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
+    .tabla-ejercicios-hiit th, .tabla-ejercicios-hiit td {
+        border: 1px solid #444;
+        padding: 0.6rem;
+        text-align: center;
+    }
+    .tabla-ejercicios-hiit th {
+        background-color: #e53935;
+        color: #fff;
+        font-weight: bold;
+    }
+    .tabla-ejercicios-hiit tr:nth-child(even) {
+        background-color: #1a1a1a;
+    }
+ 
+  /* cursor mano al pasar sobre celdas HIIT clicables */
+.hiit-cardio-seccion .hiit-ejercicio-clicable {
+  cursor: pointer;
+}   
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../../img/logo-movimiento.png" alt="Movimiento Training" />
+    <h1>Viernes – Jacky</h1>
+    <p class="instruccion">Hacé clic en un ejercicio para completarlo con tus datos.</p>
+  </header>
+
+  
+    <div class="bloque-ejercicio">
+      <h3>
+        <span>Flexiones de brazo</span>
+        <small>Sup. Serie: A</small>
+      </h3>
+      <div style="display:flex; justify-content:center;">
+        <table class="tabla-ejercicio">
+          <thead>
+            <tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>7</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>7</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+              <tr>
+                <td>3</td>
+                <td>6</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-interactivo oculto" data-ejercicio="Flexiones de brazo"></div>
+    </div>
+  
+    <div class="bloque-ejercicio">
+      <h3>
+        <span>Crunch</span>
+        <small>Sup. Serie: A</small>
+      </h3>
+      <div style="display:flex; justify-content:center;">
+        <table class="tabla-ejercicio">
+          <thead>
+            <tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>15</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´15"</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>15</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´15"</td>
+              </tr>
+            
+              <tr>
+                <td>3</td>
+                <td>15</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´15"</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-interactivo oculto" data-ejercicio="Crunch"></div>
+    </div>
+  
+    <div class="bloque-ejercicio">
+      <h3>
+        <span>Remo Con Barra</span>
+        <small>Sup. Serie: B</small>
+      </h3>
+      <div style="display:flex; justify-content:center;">
+        <table class="tabla-ejercicio">
+          <thead>
+            <tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>12</td>
+                <td>10</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>12</td>
+                <td>10</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+              <tr>
+                <td>3</td>
+                <td>12</td>
+                <td>10</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-interactivo oculto" data-ejercicio="Remo Con Barra"></div>
+    </div>
+  
+    <div class="bloque-ejercicio">
+      <h3>
+        <span>Abs toco talon</span>
+        <small>Sup. Serie: B</small>
+      </h3>
+      <div style="display:flex; justify-content:center;">
+        <table class="tabla-ejercicio">
+          <thead>
+            <tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>20</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´20"</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>20</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´20"</td>
+              </tr>
+            
+              <tr>
+                <td>3</td>
+                <td>20</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´20"</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-interactivo oculto" data-ejercicio="Abs toco talon"></div>
+    </div>
+  
+    <div class="bloque-ejercicio">
+      <h3>
+        <span>Vuelos Laterales</span>
+        <small>Sup. Serie: C</small>
+      </h3>
+      <div style="display:flex; justify-content:center;">
+        <table class="tabla-ejercicio">
+          <thead>
+            <tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>12</td>
+                <td>2,5</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>12</td>
+                <td>2,5</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+              <tr>
+                <td>3</td>
+                <td>12</td>
+                <td>2,5</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-interactivo oculto" data-ejercicio="Vuelos Laterales"></div>
+    </div>
+  
+    <div class="bloque-ejercicio">
+      <h3>
+        <span>Abs Inferiores Piernas Flexionadas</span>
+        <small>Sup. Serie: C</small>
+      </h3>
+      <div style="display:flex; justify-content:center;">
+        <table class="tabla-ejercicio">
+          <thead>
+            <tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>10</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´20"</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>10</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´20"</td>
+              </tr>
+            
+              <tr>
+                <td>3</td>
+                <td>10</td>
+                <td>-</td>
+                <td>-</td>
+                <td>1´20"</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-interactivo oculto" data-ejercicio="Abs Inferiores Piernas Flexionadas"></div>
+    </div>
+  
+    <div class="bloque-ejercicio">
+      <h3>
+        <span>Curl De Biceps Barra Recta</span>
+        <small>Sup. Serie: D</small>
+      </h3>
+      <div style="display:flex; justify-content:center;">
+        <table class="tabla-ejercicio">
+          <thead>
+            <tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>10</td>
+                <td>5</td>
+                <td>2</td>
+                <td>-</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>10</td>
+                <td>5</td>
+                <td>2</td>
+                <td>-</td>
+              </tr>
+            
+              <tr>
+                <td>3</td>
+                <td>10</td>
+                <td>5</td>
+                <td>2</td>
+                <td>-</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-interactivo oculto" data-ejercicio="Curl De Biceps Barra Recta"></div>
+    </div>
+  
+    <div class="bloque-ejercicio">
+      <h3>
+        <span>Extension De Codos Con Mancuerna</span>
+        <small>Sup. Serie: D</small>
+      </h3>
+      <div style="display:flex; justify-content:center;">
+        <table class="tabla-ejercicio">
+          <thead>
+            <tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>1</td>
+                <td>12</td>
+                <td>5</td>
+                <td>2</td>
+                <td>1´</td>
+              </tr>
+            
+              <tr>
+                <td>2</td>
+                <td>12</td>
+                <td>5</td>
+                <td>2</td>
+                <td>1´</td>
+              </tr>
+            
+              <tr>
+                <td>3</td>
+                <td>12</td>
+                <td>5</td>
+                <td>2</td>
+                <td>1´</td>
+              </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="panel-interactivo oculto" data-ejercicio="Extension De Codos Con Mancuerna"></div>
+    </div>
+  
+
+        <div class="hiit-cardio-seccion">
+            <h2 style="color: #6200ea; text-align: center; margin-bottom: 1rem;">Cardio Continuo</h2>
+            <div class="hiit-info">
+                <p><strong>Rondas:</strong> 1</p>
+                <p><strong>Tiempo de Trabajo:</strong> 20´</p>
+                
+            </div>
+            
+            <h3 style="color: #e53935; text-align: center; margin-top: 1.5rem; margin-bottom: 1rem;">Ejercicios</h3>
+            <table class="tabla-ejercicios-hiit">
+                <thead>
+                    <tr>
+                        <th>Serie</th>
+                        <th>Ejercicio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td>1</td>
+                        <td class="hiit-ejercicio-clicable">Bicicleta Fija</td>
+                    </tr>
+                
+                </tbody>
+            </table>
+            <div class="hiit-panel-interactivo oculto"></div>             
+            
+        </div>
+    
+  <footer style="text-align:center;margin-top:2rem;font-size:0.85rem;color:#aaa;">
+    Estás entrenando en Movimiento Training — Cada sesión suma, y tu esfuerzo se nota 💪🏼
+  </footer>
+
+  <script>
+    const cliente = "Jacky";
+    const semana  = "semana-1-mes1-viernes";
+
+    document.querySelectorAll('.bloque-ejercicio h3').forEach(h3 => {
+      h3.addEventListener('click', () => {
+        const nombre = h3.querySelector('span').textContent;
+        const panel  = h3.parentElement.querySelector('.panel-interactivo');
+
+        if (!panel.classList.contains('oculto')) {
+          panel.classList.add('oculto');
+          panel.innerHTML = '';
+          return;
+        }
+
+        document.querySelectorAll('.panel-interactivo').forEach(p => {
+          p.classList.add('oculto');
+          p.innerHTML = '';
+        });
+
+        const gif = '../../../gifs/' + nombre.toLowerCase().replace(/\s+/g, '-') + '.gif';
+        const html = `
+          <img src="${gif}" alt="${nombre}" style="max-width:180px;display:block;margin:1rem auto;"/>
+          <table style="width:100%;margin-top:1rem;border-collapse:collapse;font-size:0.9rem;">
+            <thead><tr><th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Desc.</th></tr></thead>
+            <tbody>
+              ${[...Array(6)].map((_,i)=>`
+                <tr>
+                  <td style="text-align:center;">${i+1}</td>
+                  <td><input name="repeticiones" class="input-cliente"/></td>
+                  <td><input name="peso" class="input-cliente"/></td>
+                  <td><input name="rir" class="input-cliente"/></td>
+                  <td><input name="descanso" class="input-cliente"/></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          <textarea name="observaciones" placeholder="Cómo te fue..." style="width:100%;height:60px;margin-top:0.8rem;color:#fff;background:#000;"></textarea>
+          <button class="btn-guardar-ejercicio">Guardar ejercicio</button>
+          <div class="mensaje-ejercicio">✔ Ejercicio guardado</div>
+        `;
+
+        panel.innerHTML = html;
+        panel.classList.remove('oculto');
+
+        const btn = panel.querySelector('.btn-guardar-ejercicio');
+        const msg = panel.querySelector('.mensaje-ejercicio');
+        const txt = panel.querySelector('textarea');
+       console.log("📤 Pidiendo datos a:", '../../../../ver_ejercicio.php?cliente=' + cliente + '&semana=' + semana + '&ejercicio=' + encodeURIComponent(nombre));
+        // 🔄 Cargar datos
+        fetch('../../../ver_ejercicio.php?cliente=' + cliente + '&semana=' + semana + '&ejercicio=' + encodeURIComponent(nombre))
+          .then(r => r.json())
+          .then(series => {
+            if (Array.isArray(series)) {
+              series.forEach((serie, i) => {
+                const fila = panel.querySelectorAll("tbody tr")[i];
+                if (fila) {
+                  fila.querySelector('[name="repeticiones"]').value = serie.repeticiones || "";
+                  fila.querySelector('[name="peso"]').value         = serie.carga || "";
+                  fila.querySelector('[name="rir"]').value          = serie.rir || "";
+                  fila.querySelector('[name="descanso"]').value     = serie.descanso || "";
+                }
+              });
+              if (series[0]) {
+                txt.value = series[0].observaciones || "";
+              }
+            }
+          });
+
+        btn.addEventListener('click', () => {
+          const data = new URLSearchParams();
+          data.append("cliente", cliente);
+          data.append("semana", semana);
+          data.append("ejercicio", nombre);
+          data.append("observaciones", txt.value);
+
+          [...panel.querySelectorAll("tbody tr")].forEach((fila, i) => {
+            const rep = fila.querySelector('[name="repeticiones"]').value.trim();
+            const peso = fila.querySelector('[name="peso"]').value.trim();
+            const rir = fila.querySelector('[name="rir"]').value.trim();
+            const descanso = fila.querySelector('[name="descanso"]').value.trim();
+
+            if (rep || peso || rir || descanso) {
+              data.append("repeticiones[]", rep);
+              data.append("carga[]", peso);
+              data.append("rir[]", rir);
+              data.append("descanso[]", descanso);
+            }
+          });
+
+          fetch("../../../guardar.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: data
+          })
+            .then(r => r.json())
+            .then(res => {
+              msg.textContent = res.mensaje || "✔ Guardado";
+              msg.style.opacity = "1";
+              setTimeout(() => msg.style.opacity = "0", 2000);
+            })
+            .catch(() => {
+              msg.textContent = "❌ Error";
+              msg.style.opacity = "1";
+              setTimeout(() => msg.style.opacity = "0", 2000);
+            });
+        });
+      });
+    });
+    // INICIO: NUEVA LÓGICA PARA EJERCICIOS DE HIIT/CARDIO (Mostrar GIF)
+    document.querySelectorAll('.hiit-ejercicio-clicable').forEach(celda => {
+        celda.addEventListener('click', () => {
+            const nombreEjercicio = celda.textContent.trim(); // Obtiene el nombre del ejercicio
+            const hiitPanel = celda.closest('.hiit-cardio-seccion').querySelector('.hiit-panel-interactivo');
+
+            // Si el panel ya está abierto para este ejercicio, lo cierra
+            if (!hiitPanel.classList.contains('oculto') && hiitPanel.dataset.currentExercise === nombreEjercicio) {
+                hiitPanel.classList.add('oculto');
+                hiitPanel.innerHTML = '';
+                delete hiitPanel.dataset.currentExercise; // Limpiar ejercicio actual
+                return;
+            }
+
+            // Cierra cualquier otro panel interactivo que pudiera estar abierto (tanto de pesas como de HIIT)
+            document.querySelectorAll('.panel-interactivo').forEach(p => { p.classList.add('oculto'); p.innerHTML = ''; });
+            document.querySelectorAll('.hiit-panel-interactivo').forEach(p => { p.classList.add('oculto'); p.innerHTML = ''; });
+
+
+            // Construye la ruta del GIF (asumiendo que los GIFs de HIIT/Cardio están en la misma carpeta "gifs")
+            // La ruta '../../../gifs/' es relativa desde el archivo exportado (clientes/jose/mesX/rutina.html)
+            // hasta la carpeta raíz donde estaría la carpeta 'gifs'.
+            const gifPath = '../../../gifs/' + nombreEjercicio.toLowerCase().replace(/\s+/g, '-') + '.gif';
+
+            const htmlPanel =
+  '<img src="' + gifPath + '" style="max-width:180px;display:block;margin:1rem auto;"/>' +
+  '<p style="text-align:center;color:#ccc;">' + nombreEjercicio + '</p>';
+
+
+            hiitPanel.innerHTML = htmlPanel;
+            hiitPanel.classList.remove('oculto');
+            hiitPanel.dataset.currentExercise = nombreEjercicio; // Guardar qué ejercicio está abierto
+        });
+    });
+    // FIN: NUEVA LÓGICA PARA EJERCICIOS DE HIIT/CARDIO
+  </script>
+</body>
+</html>

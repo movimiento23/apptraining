@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prueba Guardado de Rutina</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #222;
+      color: #fff;
+      padding: 2rem;
+    }
+    label, input, textarea {
+      display: block;
+      margin: 0.5rem 0;
+      width: 100%;
+      max-width: 400px;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      background-color: #e53935;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #respuesta {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Test: Guardar Rutina</h2>
+
+  <label>Cliente</label>
+  <input type="text" id="cliente" value="Carlos" />
+
+  <label>Semana</label>
+  <input type="text" id="semana" value="Semana 1" />
+
+  <label>Ejercicio</label>
+  <input type="text" id="ejercicio" value="Sentadilla" />
+
+  <label>Series</label>
+  <input type="number" id="series" value="3" />
+
+  <label>Repeticiones</label>
+  <input type="number" id="repeticiones" value="10" />
+
+  <label>Carga</label>
+  <input type="text" id="carga" value="60kg" />
+
+  <label>Observaciones</label>
+  <textarea id="observaciones">Buena técnica, mantener postura</textarea>
+
+  <button onclick="guardarRutina()">Guardar rutina</button>
+
+  <div id="respuesta"></div>
+
+  <script>
+    function guardarRutina() {
+      const formData = new FormData();
+      formData.append("cliente", document.getElementById("cliente").value);
+      formData.append("semana", document.getElementById("semana").value);
+      formData.append("ejercicio", document.getElementById("ejercicio").value);
+      formData.append("series", document.getElementById("series").value);
+      formData.append("repeticiones", document.getElementById("repeticiones").value);
+      formData.append("carga", document.getElementById("carga").value);
+      formData.append("observaciones", document.getElementById("observaciones").value);
+
+      fetch("http://www.temporizadormovimiento.free.nf/guardar.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("respuesta").textContent = data.mensaje;
+      })
+      .catch(error => {
+        document.getElementById("respuesta").textContent = "Error en la conexión.";
+      });
+    }
+  </script>
+
+</body>
+</html>

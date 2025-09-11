@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editor de Rutinas | Movimiento Training</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      background-color: #111;
+      color: #eee;
+      font-family: 'Montserrat', sans-serif;
+      padding: 2rem;
+    }
+    h2 {
+      text-align: center;
+      color: #e53935;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .formulario {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 0.8rem;
+    }
+    .formulario input,
+    .formulario select {
+      padding: 0.5rem;
+      border: 1px solid #444;
+      border-radius: 6px;
+      background-color: #191919;
+      color: #fff;
+    }
+    .formulario button {
+      padding: 0.8rem;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .formulario button:hover {
+      background-color: #1b5e20;
+    }
+    table {
+      width: 100%;
+      margin-top: 2rem;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .btn-eliminar {
+      background: #b71c1c;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-eliminar:hover {
+      background: #941a1a;
+    }
+    #tabla-rutina th {
+  background-color: #e53935;
+  color: #fff;
+  font-weight: bold;
+}
+#tabla-rutina td, #tabla-rutina th {
+  padding: 0.5rem;
+  border: 1px solid #333;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <h2>Editor de Rutinas – Movimiento Training</h2>
+  <input type="text" id="nombreCliente" placeholder="Nombre del cliente (ej: Laura López)">
+  <input type="text" id="nombreSemana" placeholder="Semana (ej: Semana 30)">
+  <input type="text" id="mes" placeholder="Mes (ej: 1)" oninput="this.value = 'mes' + this.value.replace(/^mes/i, '').replace(/[^0-9]/g, '')">
+
+
+
+  <div class="formulario">
+    <select id="dia">
+      <option value="lunes">Lunes</option>
+      <option value="martes">Martes</option>
+      <option value="miercoles">Miércoles</option>
+      <option value="jueves">Jueves</option>
+      <option value="viernes">Viernes</option>
+      <option value="sabado">Sábado</option>
+    </select>
+
+    <select id="ejercicio">
+  <option value="">-- Elegí un ejercicio --</option>
+</select>
+<input type="text" id="superserie" placeholder="Sup. Serie (A, B…)" />
+<input type="text" id="triserie" placeholder="Triserie/Cuatroserie (A, B…)" />
+ 
+<div id="bloque-series">
+ <table style="border-collapse: collapse; width:100%; background-color:#191919; margin-top:1rem;">
+ <thead>
+ <tr>
+ <th>Serie</th>
+<th>Reps</th>
+<th>Peso</th>
+ <th>RIR</th>
+ <th>Descanso</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>1</td>
+ <td><input type="text" class="dato-serie" name="reps" /></td>
+ <td><input type="text" class="dato-serie" name="peso" /></td>
+<td><input type="number" class="dato-serie" name="rir" /></td>
+<td><input type="text" class="dato-serie" name="descanso" /></td>
+ </tr>
+ <tr>
+<td>2</td>
+ <td><input type="text" class="dato-serie" name="reps" /></td>
+ <td><input type="text" class="dato-serie" name="peso" /></td>
+ <td><input type="number" class="dato-serie" name="rir" /></td>
+ <td><input type="text" class="dato-serie" name="descanso" /></td>
+ </tr>
+ <tr>
+ <td>3</td>
+ <td><input type="text" class="dato-serie" name="reps" /></td>
+ <td><input type="text" class="dato-serie" name="peso" /></td>
+ <td><input type="number" class="dato-serie" name="rir" /></td>
+                <td><input type="text" class="dato-serie" name="descanso" /></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><input type="text" class="dato-serie" name="reps" /></td>
+                <td><input type="text" class="dato-serie" name="peso" /></td>
+                <td><input type="number" class="dato-serie" name="rir" /></td>
+                <td><input type="text" class="dato-serie" name="descanso" /></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><input type="text" class="dato-serie" name="reps" /></td>
+                <td><input type="text" class="dato-serie" name="peso" /></td>
+                <td><input type="number" class="dato-serie" name="rir" /></td>
+                <td><input type="text" class="dato-serie" name="descanso" /></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><input type="text" class="dato-serie" name="reps" /></td>
+                <td><input type="text" class="dato-serie" name="peso" /></td>
+                <td><input type="number" class="dato-serie" name="rir" /></td>
+                <td><input type="text" class="dato-serie" name="descanso" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="agregarEjercicio()">Agregar ejercicio</button>
+    <button onclick="agregarTriserie()" style="background-color: #d32f2f; color: white; padding: 0.8rem; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 0.5rem;">Agregar Triserie/Cuatroserie</button>
+</div>
+
+  <table id="tabla-rutina">
+  <tbody></tbody>
+</table>
+<div style="text-align:center; margin-top: 1.5rem; margin-bottom: 1rem;">
+    <button id="toggleHiitCardioBtn" style="background-color: #6200ea; color: white; padding: 0.8rem; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">
+        ➕ Agregar HIIT / Cardio
+    </button>
+</div>
+
+<div id="hiit-cardio-section" style="display: none; margin-top: 1rem; background-color:#191919; padding: 1rem; border-radius: 8px;">
+    <h3 style="color: #6200ea; text-align: center; margin-bottom: 1rem;">Configuración HIIT / Cardio</h3>
+    <div class="formulario" style="display: grid; gap: 0.8rem;">
+        <input type="text" id="hiitTituloGeneral" placeholder="Título general (ej: HIIT Metabólico)" />
+        <input type="number" id="hiitRondas" placeholder="Número de Rondas" />
+        <input type="text" id="hiitTiempoTrabajo" placeholder="Tiempo de Trabajo (ej: 45s)" />
+        <input type="text" id="hiitTiempoRecuperacion" placeholder="Tiempo de Recuperación (ej: 15s)" />
+    </div>
+
+    <h3 style="color: #e53935; text-align: center; margin-top: 1.5rem; margin-bottom: 1rem;">Ejercicios HIIT</h3>
+    <table id="tabla-hiit-cardio" style="border-collapse: collapse; width: 100%; background-color:#191919;">
+        <thead>
+            <tr style="background-color: #e53935; color: #fff;">
+                <th>Serie</th>
+                <th>Ejercicio</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+                <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+                <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+                <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+                <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+                <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+                <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+                <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+                <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="agregarFilaHiit()" style="margin-top: 1rem; background-color: #2e7d32; color: white; padding: 0.8rem; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%;">Agregar fila a HIIT/Cardio</button>
+</div>
+
+  <div style="text-align:center; margin-top: 2rem;">
+    <button
+  onclick="exportarRutinaDesdeEditor(
+    document.getElementById('nombreCliente').value,
+    document.getElementById('nombreSemana').value,
+    document.getElementById('dia').value, /* Agrega el dia */
+    document.getElementById('mes').value  /* Agrega el mes */
+  )"
+  style="background:#e53935;color:white;padding:1rem 2rem;border:none;border-radius:8px;font-size:1rem;cursor:pointer;">
+  📁 Exportar rutina al cliente
+</button>
+  </div>
+
+  <button
+  onclick="generarDescansoDesdeEditor()"
+  style="background:#0288d1; color:white; padding:1rem 2rem; border:none; border-radius:8px; font-size:1rem; cursor:pointer; margin-top:1rem;">
+🧘 Marcar día como descanso
+</button>
+
+
+  <script>
+window.addEventListener("DOMContentLoaded", () => {
+    const selectPrincipal = document.getElementById("ejercicio"); // Este es tu select principal
+    const toggleHiitCardioBtn = document.getElementById('toggleHiitCardioBtn');
+    const hiitCardioSection = document.getElementById('hiit-cardio-section');
+
+    // Lógica para mostrar/ocultar la sección HIIT/Cardio
+    toggleHiitCardioBtn.addEventListener('click', () => {
+        if (hiitCardioSection.style.display === 'none' || hiitCardioSection.style.display === '') {
+            hiitCardioSection.style.display = 'block';
+            toggleHiitCardioBtn.textContent = '➖ Ocultar HIIT / Cardio';
+        } else {
+            hiitCardioSection.style.display = 'none';
+            toggleHiitCardioBtn.textContent = '➕ Agregar HIIT / Cardio';
+            // Opcional: limpiar los campos al ocultar
+            document.getElementById('hiitTituloGeneral').value = '';
+            document.getElementById('hiitRondas').value = '';
+            document.getElementById('hiitTiempoTrabajo').value = '';
+            document.getElementById('hiitTiempoRecuperacion').value = '';
+            document.querySelectorAll(".hiit-ejercicio-select").forEach(select => select.value = ""); // Limpiar selects de ejercicios
+        }
+    });
+
+    // Este bloque es para cargar y rellenar TODOS los selects de ejercicios (principal y HIIT/Cardio)
+    fetch("ejercicios.json")
+        .then(res => res.json())
+        .then(data => {
+            const ejerciciosOrdenados = data.ejercicios.slice().sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+            // Rellenar el select principal
+            selectPrincipal.innerHTML = '<option value="">-- Elegí un ejercicio --</option>'; // Opcional: para resetear
+            ejerciciosOrdenados.forEach(ej => {
+                const op = document.createElement("option");
+                op.value = ej.nombre;
+                op.textContent = ej.nombre;
+                selectPrincipal.appendChild(op);
+            });
+
+            // Rellenar TODOS los selects de la tabla HIIT/Cardio que existan al cargar la página
+            document.querySelectorAll(".hiit-ejercicio-select").forEach(selectHiit => {
+                selectHiit.innerHTML = '<option value="">-- Elegí un ejercicio --</option>'; // Limpiar y añadir opción por defecto
+                ejerciciosOrdenados.forEach(ej => {
+                    const op = document.createElement("option");
+                    op.value = ej.nombre;
+                    op.textContent = ej.nombre;
+                    selectHiit.appendChild(op);
+                });
+            });
+        })
+        .catch(err => console.error("Error al cargar ejercicios:", err));
+
+}); // <-- Este es el único cierre de window.addEventListener("DOMContentLoaded" ahora
+
+
+function agregarEjercicio() {
+    const dia = document.getElementById("dia").value;
+    const ejercicio = document.getElementById("ejercicio").value.trim();
+    const sup = document.getElementById("superserie").value.trim();
+    const tri = document.getElementById("triserie").value.trim(); // Aseguramos que no se use la triserie aquí
+
+    if (!ejercicio) return;
+
+    // Lógica para asignar colores a las superseries
+    function obtenerColorSuperserie(letra) {
+        switch (letra.toUpperCase()) {
+            case 'A': return { fondo: '#2e7d32', borde: '#1b5e20' }; // Verde
+            case 'B': return { fondo: '#0288d1', borde: '#01579b' }; // Azul
+            case 'C': return { fondo: '#512da8', borde: '#311b92' }; // Púrpura
+            case 'D': return { fondo: '#6d4c41', borde: '#3e2723' }; // Marrón
+            case 'E': return { fondo: '#ea02e7', borde: '#9e029c' }; // Fucsia
+            case 'F': return { fondo: '#008080', borde: '#006666' }; // Aguamarina oscuro
+            default: return { fondo: '#e53935', borde: '#b71c1c' }; // Rojo por defecto
+        }
+    }
+
+    const esSuperserie = sup && sup !== '-';
+    const colores = obtenerColorSuperserie(sup);
+    const claseSuperserie = esSuperserie ? `editor-superserie-${sup.toUpperCase()}` : '';
+    const fondoEncabezado = esSuperserie ? colores.fondo : '#222';
+    const bordeEncabezado = esSuperserie ? colores.borde : '#e53935';
+
+    const series = document.querySelectorAll("#bloque-series tbody tr");
+    let seriesCargadas = 0;
+    const bloqueID = "bloque-" + Date.now();
+
+    let seriesHTML = "";
+
+    series.forEach((fila, i) => {
+        const rep = fila.querySelector('input[name="reps"]').value.trim();
+        const peso = fila.querySelector('input[name="peso"]').value.trim();
+        const rir = fila.querySelector('input[name="rir"]').value.trim();
+        const descanso = fila.querySelector('input[name="descanso"]').value.trim();
+
+        if (!(rep || peso || rir || descanso)) return;
+
+        seriesCargadas++;
+
+        seriesHTML += `
+        <tr class="${bloqueID} ${claseSuperserie}" style="background-color:#1a1a1a;">
+            <td>${i + 1}</td>
+            <td>${rep || "-"}</td>
+            <td>${peso || "-"}</td>
+            <td>${rir || "-"}</td>
+            <td>${descanso || "-"}</td>
+        </tr>`;
+    });
+
+    if (seriesCargadas === 0) return;
+    const supSpan = esSuperserie
+    ? `<span style="float:right;">Sup. Serie: ${sup}</span>`
+    : '';
+
+    const encabezado = `
+<tr class="${bloqueID}" style="background:${fondoEncabezado}; font-weight:bold; color:#fff;">
+    <td colspan="5">
+      ${dia.charAt(0).toUpperCase() + dia.slice(1)} — ${ejercicio} ${supSpan}
+    </td>
+</tr>
+<tr class="${bloqueID}" style="background:${bordeEncabezado}; color:#fff;">
+    <th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Descanso</th>
+</tr>`;
+
+    const botonEliminar = `
+    <tr class="${bloqueID}">
+        <td colspan="5" style="text-align:right;">
+            <button class="btn-eliminar" onclick="eliminarBloque('${bloqueID}')">🗑 Eliminar bloque</button>
+        </td>
+    </tr>`;
+
+    const tablaFinal = encabezado + seriesHTML + botonEliminar;
+
+    document.querySelector("#tabla-rutina tbody").insertAdjacentHTML("beforeend", tablaFinal);
+
+    // Limpiar inputs
+    document.querySelectorAll(".dato-serie").forEach(input => input.value = "");
+    document.getElementById("superserie").value = "";
+    document.getElementById("triserie").value = ""; // Limpiamos el campo de triserie para evitar conflictos
+}
+
+function agregarTriserie() {
+    const dia = document.getElementById("dia").value;
+    const ejercicio = document.getElementById("ejercicio").value.trim();
+    const tri = document.getElementById("triserie").value.trim();
+    const sup = document.getElementById("superserie").value.trim(); // Aseguramos que no se use la superserie aquí
+
+    if (!ejercicio) return;
+
+    // Lógica para asignar colores a las triseries
+    function obtenerColorTriserie(letra) {
+        switch (letra.toUpperCase()) {
+            case 'A': return { fondo: '#d32f2f', borde: '#9a0007' }; // Rojo
+            case 'B': return { fondo: '#ffc107', borde: '#ff8f00' }; // Amarillo
+            case 'C': return { fondo: '#757575', borde: '#494949' }; // Gris
+            case 'D': return { fondo: '#00bcd4', borde: '#00838f' }; // Cian
+            default: return { fondo: '#e53935', borde: '#b71c1c' }; // Rojo por defecto
+        }
+    }
+
+    const esTriserie = tri && tri !== '-';
+    const colores = obtenerColorTriserie(tri);
+    const claseTriserie = esTriserie ? `editor-triserie-${tri.toUpperCase()}` : '';
+    const fondoEncabezado = esTriserie ? colores.fondo : '#222';
+    const bordeEncabezado = esTriserie ? colores.borde : '#e53935';
+
+    const series = document.querySelectorAll("#bloque-series tbody tr");
+    let seriesCargadas = 0;
+    const bloqueID = "bloque-" + Date.now();
+
+    let seriesHTML = "";
+
+    series.forEach((fila, i) => {
+        const rep = fila.querySelector('input[name="reps"]').value.trim();
+        const peso = fila.querySelector('input[name="peso"]').value.trim();
+        const rir = fila.querySelector('input[name="rir"]').value.trim();
+        const descanso = fila.querySelector('input[name="descanso"]').value.trim();
+
+        if (!(rep || peso || rir || descanso)) return;
+
+        seriesCargadas++;
+
+        seriesHTML += `
+        <tr class="${bloqueID} ${claseTriserie}" style="background-color:#1a1a1a;">
+            <td>${i + 1}</td>
+            <td>${rep || "-"}</td>
+            <td>${peso || "-"}</td>
+            <td>${rir || "-"}</td>
+            <td>${descanso || "-"}</td>
+        </tr>`;
+    });
+
+    if (seriesCargadas === 0) return;
+    const triSpan = esTriserie
+    ? `<span style="float:right;">Triserie: ${tri}</span>`
+    : '';
+
+    const encabezado = `
+<tr class="${bloqueID}" style="background:${fondoEncabezado}; font-weight:bold; color:#fff;">
+    <td colspan="5">
+      ${dia.charAt(0).toUpperCase() + dia.slice(1)} — ${ejercicio} ${triSpan}
+    </td>
+</tr>
+<tr class="${bloqueID}" style="background:${bordeEncabezado}; color:#fff;">
+    <th>Serie</th><th>Reps</th><th>Peso</th><th>RIR</th><th>Descanso</th>
+</tr>`;
+
+    const botonEliminar = `
+    <tr class="${bloqueID}">
+        <td colspan="5" style="text-align:right;">
+            <button class="btn-eliminar" onclick="eliminarBloque('${bloqueID}')">🗑 Eliminar bloque</button>
+        </td>
+    </tr>`;
+
+    const tablaFinal = encabezado + seriesHTML + botonEliminar;
+
+    document.querySelector("#tabla-rutina tbody").insertAdjacentHTML("beforeend", tablaFinal);
+
+    // Limpiar inputs
+    document.querySelectorAll(".dato-serie").forEach(input => input.value = "");
+    document.getElementById("superserie").value = ""; // Limpiamos el campo de superserie para evitar conflictos
+    document.getElementById("triserie").value = "";
+}
+
+// El resto de tus funciones como eliminarBloque, eliminarFila, etc., se mantienen sin cambios.
+
+
+function eliminarBloque(id) {
+  document.querySelectorAll(`.${id}`).forEach(fila => fila.remove());
+}
+
+function eliminarFila(boton) {
+  const fila = boton.closest("tr");
+  const filaSiguiente = fila.nextElementSibling;
+
+  // Si hay una fila "panel-interactivo" justo después, la borramos también
+  if (filaSiguiente && filaSiguiente.classList.contains("panel-interactivo")) {
+    filaSiguiente.remove();
+  }
+
+  fila.remove();
+}
+function generarDescansoDesdeEditor() {
+  const cliente   = document.getElementById("nombreCliente").value.trim();
+  const semana    = document.getElementById("nombreSemana").value.trim();
+  const mes       = document.getElementById("mes").value.trim().toLowerCase();
+  const dia       = document.getElementById("dia").value.toLowerCase();
+
+  if (!cliente || !semana || !mes || !dia) {
+    alert("⚠️ Completá todos los campos antes de generar la rutina de descanso.");
+    return;
+  }
+
+  function eliminarFilaHiit(boton) {
+    boton.closest("tr").remove();
+    // Reajustar los números de serie después de eliminar una fila
+    document.querySelectorAll("#tabla-hiit-cardio tbody tr").forEach((row, index) => {
+        row.querySelector("td:first-child").textContent = index + 1;
+    });
+}
+
+function agregarFilaHiit() {
+    const tablaBody = document.querySelector("#tabla-hiit-cardio tbody");
+    const nuevaFila = document.createElement("tr");
+    const numActualRows = tablaBody.querySelectorAll("tr").length;
+
+    nuevaFila.innerHTML = `
+        <td>${numActualRows + 1}</td>
+        <td><select class="hiit-ejercicio-select"><option value="">-- Elegí un ejercicio --</option></select></td>
+        <td><button class="btn-eliminar-hiit" onclick="eliminarFilaHiit(this)">🗑</button></td>
+    `;
+    tablaBody.appendChild(nuevaFila);
+
+    // Rellenar el nuevo select con ejercicios de ejercicios.json
+    const nuevoSelect = nuevaFila.querySelector(".hiit-ejercicio-select");
+    fetch("ejercicios.json")
+        .then(res => res.json())
+        .then(data => {
+            const ejerciciosOrdenados = data.ejercicios.slice().sort((a, b) => a.nombre.localeCompare(b.nombre));
+            nuevoSelect.innerHTML = '<option value="">-- Elegí un ejercicio --</option>'; // Asegurar opción por defecto
+            ejerciciosOrdenados.forEach(ej => {
+                const op = document.createElement("option");
+                op.value = ej.nombre;
+                op.textContent = ej.nombre;
+                nuevoSelect.appendChild(op);
+            });
+        })
+        .catch(err => console.error("Error al cargar ejercicios para nueva fila HIIT:", err));
+}
+  const contenidoDescanso = `
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Día de descanso – ${cliente}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: url('../../../img/descanso.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 1rem;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contenedor {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 95%;
+      max-width: 400px; /* Perfecto para móviles */
+      text-align: center;
+      color: #ffffff;
+      font-size: 1.1rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      animation: aparecer 0.6s ease-out forwards;
+    }
+
+    h1 {
+      color: #ff7961;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .descanso-mensaje {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #f2f2f2;
+    }
+
+    .descanso-mensaje br {
+      display: block;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-flotante {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      width: 60px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    /* Responsive para pantallas pequeñas */
+    @media (max-width: 480px) {
+      .contenedor {
+        padding: 1.5rem;
+        font-size: 1rem;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+      .descanso-mensaje {
+        font-size: 0.95rem;
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <img src="../../img/logo-movimiento.png" alt="Logo Movimiento Training" style="width: 100px; max-width: 80%; margin-bottom: 1rem;" />
+    <h1>¡Hoy Es Tu Día De Descanso, ${cliente}!</h1>
+    <p class="descanso-mensaje">
+      🧘‍♂️ Tu cuerpo hoy se recupera, pero tu compromiso sigue firme.<br>
+      Movete, hacé pausas activas, estirate, hidratate, y recordá que descansar también es avanzar.<br><br>
+      ¡Nos vemos en el Próximo Entrenamiento con toda la energía!
+    </p>
+  </div>
+</body>
+</html>`;
+
+const blob = new Blob([contenidoDescanso], { type: "text/html" });
+const enlace = document.createElement("a");
+enlace.href = URL.createObjectURL(blob);
+enlace.download = `semana-${semana}-${mes}-${dia}.html`;
+enlace.style.display = "none";
+document.body.appendChild(enlace);
+enlace.click();
+document.body.removeChild(enlace);
+}
+</script>
+<script src="exportador-cliente.js"></script>
+</div>
+</body>
+</html>
